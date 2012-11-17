@@ -34,6 +34,13 @@ window.render_entry = (x) ->
   </div>
   """
 
+window.render_entries= () ->
+  for x in Entry.all()
+    
+
+jQuery ($) ->
+  #code for intialization should go here
+
 exports = this #this is needed to get around the coffeescript namespace wrap
 exports.Entry = Entry
 

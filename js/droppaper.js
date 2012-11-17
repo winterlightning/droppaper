@@ -33,6 +33,10 @@
     return "  \n<div class=\"box w-50 h-50 box-b-r\">\n  <h3>{ x.title }<span>{ x.author }</span></h3>\n  <p>{x.text}</p>\n</div>";
   };
 
+  window.render_entries = function() {};
+
+  jQuery(function($) {});
+
   exports = this;
 
   exports.Entry = Entry;
