@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	</head>
+	<body>
+	
+			<script type="text/javascript">
+
+			google.load("feeds", "1");
+
+			function initialize() {
+			  var feed = new google.feeds.Feed("http://fastpshb.appspot.com/feed/1/fastpshb");
+			  feed.load(function(result) {
+				if (!result.error) {
+				  var container = document.getElementById("feed");
+				  for (var i = 0; i < result.feed.entries.length; i++) {
+					var entry = result.feed.entries[i];
+					var div = document.createElement("div");
+					div.appendChild(document.createTextNode(entry.title));
+					container.appendChild(div);
+				  }
+				}
+			  });
+			}
+			google.setOnLoadCallback(initialize);
+
+		</script>
+		
+<!--
+		<script>
+			var counter = 0;
+			
+			function onRequest(request, sender, callback) {
+				if (request.action == 'fetchData') {
+					fetchData(callback);
+				}
+			};
+		
+			function fetchData(callback) {
+				var xmlReq = new XMLHttpRequest();
+				xmlReq.onreadystatechange = function(data) {
+					if (xmlReq.readyState == 4) {
+						if (xmlReq.status == 200) {
+							parser=new DOMParser();
+							var data = parser.parseFromString(xmlReq.responseText,"text/xml");
+							callback(xmlReq.responseText);
+						} else {
+							callback(null);
+						}
+					}
+				}
+				var url;
+				url = "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://www.digg.com/rss/index.xml";
+				xmlReq.open('GET', url, true);
+				xmlReq.send();
+			};
+			
+			chrome.extension.onRequest.addListener(onRequest);
+			
+		</script>
+-->
+	</body>
+</html>
+

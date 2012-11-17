@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+		body {
+			min-width:357px;
+			min-height:357px;
+			overflow-x:hidden;
+		}
+		</style>
+		
+		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+		<script type="text/javascript">
+
+			function onRequest(request, sender, callback) {
+				if (request.action == 'fetchFeedData') {
+					fetchFeedData(callback);
+				}
+			};
+		
+			function fetchFeedData(callback) {
+				google.load("feeds", "1");
+				
+				var feed = new google.feeds.Feed("http://fastpshb.appspot.com/feed/1/fastpshb");
+				feed.load(function(result) {
+				if (!result.error) {
+				  var container = document.getElementById("feed");
+				  for (var i = 0; i < result.feed.entries.length; i++) {
+					var entry = result.feed.entries[i];
+					var div = document.createElement("div");
+					div.appendChild(document.createTextNode(entry.title));
+					container.appendChild(div);
+				  }
+				  callback("callback call");
+				}
+			  });
+			};
+			
+			function fetchFeedData1(callback) {
+				google.load("feeds", "1");
+				
+				var feed = new google.feeds.Feed("http://fastpshb.appspot.com/feed/1/fastpshb");
+				feed.load(function(result) {
+				if (!result.error) {
+				  var container = document.getElementById("feed");
+				  for (var i = 0; i < result.feed.entries.length; i++) {
+					var entry = result.feed.entries[i];
+					var div = document.createElement("div");
+					div.appendChild(document.createTextNode(entry.title));
+					container.appendChild(div);
+				  }
+				}
+			  });
+			};
+			
+			chrome.extension.onRequest.addListener(onRequest);
+			
+		</script>
+	</head>
+	<body>
+		Body!
+	</body>
+</html>
+
