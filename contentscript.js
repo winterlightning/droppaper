@@ -25,8 +25,8 @@ google.setOnLoadCallback(initialize);
 
 */
 
+/*
 function onText(data) {
-	alert("onText(data)");
 	fetchFeedData1("1");
 }
 
@@ -36,3 +36,5 @@ function to()
 }
 
 to();
+
+*/
