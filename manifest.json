@@ -5,7 +5,8 @@
   "description": "Drop Paper",
   "permissions": [
 	"http://*/*",
-	"https://*/*"
+	"https://*/*",
+	"tabs"
   ],
   "browser_action": {
     "default_icon": "dp_icon.png"

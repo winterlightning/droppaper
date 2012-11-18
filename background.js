@@ -1,17 +1,9 @@
-/*
- *  How to see historical entries in a feed.  Usually a feed only returns x number
- *  of results, and you want more.  Since the Google Feeds API caches feeds, you can
- *  dig into the history of entries that it has cached.  This, paired with setNumEntries,
- *  allows you to get more entries than normally possible.
- */
-
 google.load("feeds", "1");
 
 var gPageUrl = "", gPageDomain = "", gPageTitle = "";
 
-//TODO-call from background.html
-//init("http://techcrunch.com","iUrl", "Gillmor Gang: Sinofsky Falls");
 
+//init("http://techcrunch.com","iUrl", "Gillmor Gang: Sinofsky Falls");
 function init(iDomain,iUrl, iTitle) {
 
 	//TODO-init global paramaters from input
