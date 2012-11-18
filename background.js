@@ -69,6 +69,9 @@ function feedLoaded(result) {
 				console.log(entry.title);
 				console.log(entry.content);
 				console.log(entry.link);
+				
+				Entry.create({"title":entry.title, "text":entry.content, "time":entry.publishedDate, "url":entry.link });
+				
 				console.log("******match end*******");
 				flag=1;
 				i=1000;
