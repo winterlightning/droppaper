@@ -59,14 +59,20 @@ function feedLoaded(result) {
 			
 			var tmpArr = entry.title.split(' ');
 			var min = (arr.length<tmpArr.length?arr.length:tmpArr.length);
-			
+			var halfMin = min/2; 
 			var count=0;
 			for(var j=0; j<arr.length; j++) {
 			  for(var k=0; k<tmpArr.length ; k++) {
-			    if(arr[j]==tmpArr[k])count++;
+			    if(arr[j]==tmpArr[k]) {
+			    	count++;
+			    	if ((halfMin)<=count)  {
+			    		j=10000;
+			    		k=10000;
+		    		} 
+			    }
 			  }  
 			}
-			if ((min/2)<=count)  {
+			if ((halfMin)<=count)  {
 				console.log("******match start*******");
 				console.log(entry.title);
 				console.log(entry.content);
@@ -107,4 +113,16 @@ function OnLoad() {
 	google.feeds.findFeeds(query, findDone);
 }
 
-//google.setOnLoadCallback(OnLoad); 
+function t(o) {
+	console.log(o);
+	console.log(o.url);
+	console.log(o.title);
+	var r = o.url.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
+	if (r[1])
+	{
+		var domain =  r[1];
+		init(domain, o.url, o.title);	
+	}
+}
+
+chrome.browserAction.onClicked.addListener(t);
