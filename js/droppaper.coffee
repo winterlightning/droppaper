@@ -40,7 +40,7 @@ window.render_entries= () ->
   for x in Entry.all()
     console.log(x)
     if counter % 4 is 0
-      box = box + """<div class="f-page">
+      box = box + """<div class="f-page" style="display:none;">
         <div class="f-title">
           <a></a> 
           <h2>Your DropPaper</h2>
@@ -69,7 +69,7 @@ window.render_entries= () ->
 jQuery ($) ->
   #code for intialization should go here
   window.render_entries()
-  setTimeout("$('#flip').flips()", 500)
+  setTimeout("$('#flip').flips()", 1000)
   
 
 exports = this #this is needed to get around the coffeescript namespace wrap

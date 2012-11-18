@@ -566,9 +566,9 @@
 				
 			} );
 			
-			this.$flipPages.find( '.box' ).live("tap", function(event) {} );
 			
-			this.$flipPages.find( '.box' ).on( 'click.flips tap.flips', function( event ) {
+			
+			this.$flipPages.find( '.box' ).on( 'click.flips tap', function( event ) {
 				
 				var $box 			= $(this),
 					$boxClose		= $( '<span class="box-close">close</span>' ),

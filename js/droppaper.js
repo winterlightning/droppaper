@@ -42,7 +42,7 @@
       x = _ref[_i];
       console.log(x);
       if (counter % 4 === 0) {
-        box = box + "<div class=\"f-page\">\n<div class=\"f-title\">\n  <a></a> \n  <h2>Your DropPaper</h2>\n  <a href=\"\"></a>\n</div>";
+        box = box + "<div class=\"f-page\" style=\"display:none;\">\n<div class=\"f-title\">\n  <a></a> \n  <h2>Your DropPaper</h2>\n  <a href=\"\"></a>\n</div>";
       }
       box = box + window.render_entry(x);
       if (counter % 4 === 3 || counter === Entry.all().length - 1) {
@@ -60,7 +60,7 @@
 
   jQuery(function($) {
     window.render_entries();
-    return setTimeout("$('#flip').flips()", 500);
+    return setTimeout("$('#flip').flips()", 1000);
   });
 
   exports = this;
