@@ -9,6 +9,13 @@ function init(iDomain,iUrl, iTitle) {
 		Nimbus.Auth.authorize();
 	};
 
+	var notification = webkitNotifications.createNotification(
+	  'dp_icon.png',  // icon url - can be relative
+	  'Processing the page',  // notification title
+	  iTitle
+	);
+	notification.show();
+
 	//TODO-init global paramaters from input
 	gPageUrl = iUrl;
 	gPageDomain = iDomain;
