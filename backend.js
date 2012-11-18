@@ -2,9 +2,9 @@
 (function() {
   var Entry, exports;
 
-  Nimbus.Auth.setup("Dropbox", "lejn01o1njs1elo", "2f02rqbnn08u8at", "diary_app");
+  Nimbus.Auth.setup("Dropbox", "q5yx30gr8mcvq4f", "qy64qphr70lwui5", "droppaper");
 
-  Entry = Nimbus.Model.setup("Entry", ["title", "text", "time", "url", "author"]);
+  Entry = Nimbus.Model.setup("Entry", ["title", "text", "creation_time", "url"]);
 
   exports = this;
 
