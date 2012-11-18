@@ -1,6 +1,5 @@
 function makeVisible (elementId) {
-  document.getElementById(elementId).style.visibility = 'visible';
-  document.getElementById(elementId).style.display = 'block';
+	console.log("test");
 }
 function initSearch() {
   
@@ -27,11 +26,11 @@ chrome.extension.onRequest.addListener(function(words) {
 
 window.onload = function() {
   document.getElementById('login').onclick = initSearch;
-  document.getElementById('save').onclick = closeWindow;
+  document.getElementById('save').onclick = makeVisible;
 
 };
 
-
+/*
 chrome.windows.getCurrent(function (currentWindow) {
    chrome.tabs.query({active: true, windowId: currentWindow.id},
    	function(activeTabs) {
@@ -39,4 +38,4 @@ chrome.windows.getCurrent(function (currentWindow) {
    		container.appendChild(activeTabs);
     	console.log(activeTabs);
    	});
-});  
+});  */
