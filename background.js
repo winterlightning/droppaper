@@ -2,9 +2,12 @@ google.load("feeds", "1");
 
 var gPageUrl = "", gPageDomain = "", gPageTitle = "";
 
-
 //init("http://techcrunch.com","iUrl", "Gillmor Gang: Sinofsky Falls");
 function init(iDomain,iUrl, iTitle) {
+
+	if (!Nimbus.Auth.authorized() ) {
+		Nimbus.Auth.authorize();
+	};
 
 	//TODO-init global paramaters from input
 	gPageUrl = iUrl;

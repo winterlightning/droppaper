@@ -6,6 +6,14 @@
 
   Entry = Nimbus.Model.setup("Entry", ["title", "text", "creation_time", "url"]);
 
+  Nimbus.Auth.authorized_callback = function() {
+    if (Nimbus.Auth.authorized()) {
+      return Entry.sync_all(function() {
+        return log("working synced app");
+      });
+    }
+  };
+
   exports = this;
 
   exports.Entry = Entry;
