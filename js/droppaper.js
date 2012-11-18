@@ -30,12 +30,38 @@
   });
 
   window.render_entry = function(x) {
-    return "  \n<div class=\"box w-50 h-50 box-b-r\">\n  <h3>{ x.title }<span>{ x.author }</span></h3>\n  <p>{x.text}</p>\n</div>";
+    return "  \n<div class=\"box w-50 h-50 box-b-r\">\n  <h3>" + x.title + "<span>" + x.author + "</span></h3>\n  <p>" + x.text + "</p>\n</div>";
   };
 
-  window.render_entries = function() {};
+  window.render_entries = function() {
+    var box, counter, end, x, _i, _len, _ref;
+    counter = 0;
+    box = "";
+    _ref = Entry.all();
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      x = _ref[_i];
+      console.log(x);
+      if (counter % 4 === 0) {
+        box = box + "<div class=\"f-page\">\n<div class=\"f-title\">\n  <a></a> \n  <h2>Your DropPaper</h2>\n  <a href=\"\"></a>\n</div>";
+      }
+      box = box + window.render_entry(x);
+      if (counter % 4 === 3 || counter === Entry.all().length - 1) {
+        box = box + "</div>";
+        console.log("BOX: ", box);
+        $("#flip").append(box);
+        box = "";
+      }
+      console.log("counter", counter);
+      counter = counter + 1;
+    }
+    end = "<div class=\"f-page f-cover-back\">\n<div id=\"codrops-ad-wrapper\">\n    \n  </div>\n</div>";
+    return $("#flip").append(end);
+  };
 
-  jQuery(function($) {});
+  jQuery(function($) {
+    window.render_entries();
+    return setTimeout("$('#flip').flips()", 500);
+  });
 
   exports = this;
 
