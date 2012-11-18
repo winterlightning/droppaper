@@ -70,6 +70,13 @@ function feedLoaded(result) {
 				console.log(entry.content);
 				console.log(entry.link);
 				
+				var notification = webkitNotifications.createNotification(
+				  'dp_icon.png',  // icon url - can be relative
+				  'Entry added',  // notification title
+				  entry.title  // notification body text
+				);
+				notification.show();
+				
 				Entry.create({"title":entry.title, "text":entry.content, "time":entry.publishedDate, "url":entry.link });
 				
 				console.log("******match end*******");
