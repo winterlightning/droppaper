@@ -9,7 +9,25 @@
   Nimbus.Auth.authorized_callback = function() {
     if (Nimbus.Auth.authorized()) {
       return Entry.sync_all(function() {
-        return log("working synced app");
+        log("working synced app");
+        return location.reload();
+      });
+    }
+  };
+
+  window.auth = function() {
+    return Nimbus.Auth.authorize();
+  };
+
+  window.validate = function() {
+    return Nimbus.Auth.initialize();
+  };
+
+  window.sync_entry = function() {
+    console.log("syncing");
+    if (Nimbus.Auth.authorized()) {
+      return Entry.sync_all(function() {
+        return location.reload();
       });
     }
   };
@@ -39,7 +57,7 @@
       console.log("counter", counter);
       counter = counter + 1;
     }
-    end = "<div class=\"f-page f-cover-back\">\n<div id=\"codrops-ad-wrapper\">\n    \n  </div>\n</div>";
+    end = "<div class=\"f-page f-cover-back\">\n<div id=\"codrops-ad-wrapper\">          \n    <a onclick=\"window.auth()\" style=\"font-size: 30px; cursor: pointer;\">Authorize</a><br />\n    <a onclick=\"window.validate()\" style=\"font-size: 30px; cursor: pointer;\">Validate</a><br />\n    <a onclick=\"window.sync_entry()\" style=\"font-size: 30px; cursor: pointer;\">Sync All</a>\n    \n  </div>\n</div>";
     return $("#flip").append(end);
   };
 

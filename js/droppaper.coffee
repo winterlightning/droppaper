@@ -6,6 +6,23 @@ Nimbus.Auth.authorized_callback = ->
   if Nimbus.Auth.authorized()
     Entry.sync_all ->
       log "working synced app"
+      location.reload()
+
+window.auth = ()-> 
+  Nimbus.Auth.authorize()
+
+window.validate = ()->
+  Nimbus.Auth.initialize()
+
+window.sync_entry = ->
+  console.log("syncing")
+  if Nimbus.Auth.authorized()
+    Entry.sync_all( ()->
+      location.reload()
+      #window.store.loadData(get_entry_from_spine(), false)
+      #window.list.refresh()
+    )
+
 
 window.render_entry = (x) ->
   """  
@@ -41,7 +58,10 @@ window.render_entries= () ->
     counter = counter + 1
   
   end = """<div class="f-page f-cover-back">
-      <div id="codrops-ad-wrapper">
+      <div id="codrops-ad-wrapper">          
+          <a onclick="window.auth()" style="font-size: 30px; cursor: pointer;">Authorize</a><br />
+          <a onclick="window.validate()" style="font-size: 30px; cursor: pointer;">Validate</a><br />
+          <a onclick="window.sync_entry()" style="font-size: 30px; cursor: pointer;">Sync All</a>
           
         </div>
       </div>"""
